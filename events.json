@@ -1,0 +1,15 @@
+{
+    "timezones": {
+        "utc": "UTC",
+        "pacific": "America/Los_Angeles",
+        "japan": "Asia/Tokyo"
+    },
+    "events": {
+        "birthday": [{
+            "name": "Test",
+            "asset": "idols.TestUser",
+            "date": "18/12",
+            "timezone": "japan"
+        }]
+    }
+}
