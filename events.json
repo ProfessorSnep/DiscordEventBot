@@ -8,15 +8,15 @@
         "birthday": [{
             "name": "Test",
             "asset": "idols.TestUser",
-            "start": "13/01 00:00",
-            "end": "13/01 23:59",
+            "start": "13/01 00:00:00",
+            "end": "13/01 23:59:59",
             "timezone": "japan"
         },
         {
             "name": "Tes2",
             "asset": "idols.TestUser",
-            "start": "12/12 00:00",
-            "end": "13/02 23:59",
+            "start": "31/01 13:14:00",
+            "end": "31/01 13:15:00",
             "timezone": "japan"
         }]
     }

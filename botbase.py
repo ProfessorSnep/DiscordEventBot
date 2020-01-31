@@ -33,9 +33,9 @@ class EventDate:
         self.hour = int(hour)
         self.minute = int(minute)
 
-    def to_datetime(self, tz, year):
-        date = datetime.datetime.strptime(self.datestring, "%d/%m %H:%M")
-        date = date.replace(year=year, tzinfo=tz)
+    def to_datetime(self, tzinfo, year):
+        date = datetime.datetime.strptime(self.datestring, "%d/%m %H:%M:%S")
+        date = date.replace(year=year, tzinfo=tzinfo)
         return date
 
 
@@ -54,8 +54,8 @@ class Event:
     def is_active(self, current_time=None):
         if not current_time:
             current_time = datetime.datetime.now(tz=self.timezone)
-        start = self.start_date.to_datetime(self.timezone, current_time.year)
-        end = self.end_date.to_datetime(self.timezone, current_time.year)
+        start = self.start_date.to_datetime(current_time.tzinfo, current_time.year)
+        end = self.end_date.to_datetime(current_time.tzinfo, current_time.year)
         print(start, end, current_time)
         if (start < end):
             # event does not wrap a year
@@ -105,7 +105,7 @@ async def check_task():
         # find which events are active
         for ev in EVENTS:
             date = datetime.datetime.now(tz=ev.timezone)
-            date = date.replace(day=_daycount)
+            #date = date.replace(day=_daycount)
             if ev.is_active(date):
                 # event is active
 
@@ -131,8 +131,8 @@ async def check_task():
             asyncio.gather(*tasks)
 
         print(ACTIVE_EVENTS)
-        _daycount %= 30
-        _daycount += 1
+        #_daycount %= 30
+        #_daycount += 1
 
         initial_startup = False
         await asyncio.sleep(1)
